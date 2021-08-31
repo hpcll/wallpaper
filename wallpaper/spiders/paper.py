@@ -1,10 +1,10 @@
 from scrapy import Spider, cmdline
 import scrapy
-
+from wallpaper.items import WallpaperItem
 
 class PaperSpider(scrapy.Spider):
     name = 'paper'
-
+    allowed_domains = ["api2.bmob.cn"]
     def start_requests(self):
         url = 'https://api2.bmob.cn/1/classes/ComputerImage?limit=100&order=-updatedAt&' \
               'where={"ranking":{"$gt":3},"reportCount":{"$lt":1}}'
@@ -18,8 +18,16 @@ class PaperSpider(scrapy.Spider):
         yield scrapy.Request(url, method='get', headers=heard)
 
     def parse(self, response):
-        print(response.text)
+        re = response.json()
+        data = re["results"]
+        for i in range(len(data)):
+            j = data[i]
+            item = WallpaperItem()
+            item["objectId"] = j["objectId"]
+            item["largeImageUrl"] = j["largeImageUrl"]
+            yield item
+
 
 if __name__ == '__main__':
-    cmdline.execute("scrapy crawl paper".split())
+    cmdline.execute("scrapy crawl paper -o items.json".split())
 
