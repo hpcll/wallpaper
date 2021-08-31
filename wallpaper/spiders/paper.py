@@ -28,6 +28,6 @@ class PaperSpider(scrapy.Spider):
             yield item
 
 
+
 if __name__ == '__main__':
     cmdline.execute("scrapy crawl paper -o items.json".split())
-
