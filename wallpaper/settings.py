@@ -13,6 +13,10 @@ SPIDER_MODULES = ['wallpaper.spiders']
 NEWSPIDER_MODULE = 'wallpaper.spiders'
 
 
+#MONGODB 配置
+MONGO_DB_URI = 'mongodb://47.100.130.64:27017'
+MONGO_DB_NAME = 'wallpaper'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wallpaper (+http://www.yourdomain.com)'
 
@@ -64,7 +68,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'wallpaper.pipelines.WallpaperPipeline': 300,
-    'wallpaper.pipelines.images.ImagesPipeline': 200,
+    # 'wallpaper.pipelines.images.ImagesPipeline': 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

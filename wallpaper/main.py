@@ -2,4 +2,4 @@ from scrapy import cmdline
 
 
 if __name__ == '__main__':
-    cmdline.execute("scrapy crawl paper -o items.json".split())
+    cmdline.execute("scrapy crawl paper".split())

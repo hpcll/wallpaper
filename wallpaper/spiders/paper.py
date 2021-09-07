@@ -25,9 +25,6 @@ class PaperSpider(scrapy.Spider):
             item = WallpaperItem()
             item["objectId"] = j["objectId"]
             item["largeImageUrl"] = j["largeImageUrl"]
+            # print(item)
             yield item
 
-
-
-if __name__ == '__main__':
-    cmdline.execute("scrapy crawl paper -o items.json".split())

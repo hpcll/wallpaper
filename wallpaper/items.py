@@ -5,9 +5,10 @@
 
 import scrapy
 
+
 class WallpaperItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     objectId = scrapy.Field()
     largeImageUrl = scrapy.Field()
-    print(objectId)
+    # print(objectId)
